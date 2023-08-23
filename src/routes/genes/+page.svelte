@@ -11,12 +11,13 @@
   const height = 600;
   const r = 250;
   
-  
+
 </script>
   
   <svg viewBox='0 0 {width} {height}'>
       <circle cx={width / 2} cy={height / 2} r={r}/>
-      <line x1={width / 2} y1= {width / 2} x2="40" y2="50" />
+      <line x1=0 y1=0 x2={r} y2=0
+      transform="translate({width/2},{height/2}) rotate(5)" />
   </svg>
   
   <style>
