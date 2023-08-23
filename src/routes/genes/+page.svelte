@@ -14,15 +14,18 @@
   const width = 600;
   const height = 600;
   const r = 250;
+  let selected_datapoint = undefined;
 </script>
 
 <svg viewBox='0 0 {width} {height}'>
     <circle cx={width / 2} cy={height / 2} r={r}/>
-    
+
     {#each datapoints as d, i}
       {#if d.gene_strand === "forward"}
         <line x1={r-10} y1=0 x2={r} y2=0
-          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" />
+          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
+          on:mouseover={function() {selected_datapoint = d}}
+          on:mouseout={function() {selected_datapoint = d}}                       />
       {:else}
         <line x1={r} y1=0 x2={r+10} y2=0
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" />
@@ -30,13 +33,8 @@
     {/each}
 </svg>
 
-<div>
-<ul>
-{#each datapoints as d}
-  <li>{d.gene_id}</li>
-{/each}
-</ul>
-</div>
+{selected_datapoint.gene_name}
+
 
 <style>
   svg {
@@ -45,7 +43,7 @@
   }
   line {
               stroke: black;
-              stroke-width: 0.5;
+              stroke-width: 0.2;
       }
   circle {
               stroke: black;
