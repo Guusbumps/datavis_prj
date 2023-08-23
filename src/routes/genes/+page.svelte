@@ -15,8 +15,10 @@
   const height = 600;
   const r = 250;
   let selected_datapoint = '';
+  let clicked = 0
   function handleClick(d) {
     selected_datapoint = "hallo";
+    clicked = 1
   }
 </script>
 
@@ -29,7 +31,7 @@
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
           on:mouseover={function() {selected_datapoint = d.gene_name}}
           on:mouseout={function() {selected_datapoint = ""}} 
-          on:click={"location.href='pageurl.html';"}
+          on:click={handleClick(d)}
  />
       {:else if d.gene_strand === "reverse"}
         <line x1={r} y1=0 x2={r+10} y2=0
@@ -43,6 +45,10 @@
       {selected_datapoint}
     </text>
 </svg>
+
+{#if clicked === 1}
+  <a href='/{d.gene_name}' />
+{/if}
 
 <style>
   svg {
