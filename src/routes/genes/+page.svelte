@@ -24,8 +24,8 @@
       {#if d.gene_strand === "forward"}
         <line x1={r-10} y1=0 x2={r} y2=0
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
-          on:mouseover={function() {selected_datapoint = d}}
-          on:mouseout={function() {selected_datapoint = d}} />
+          on:mouseover={function() {selected_datapoint = d.gene_name}}
+          on:mouseout={function() {selected_datapoint = d.gene_name}} />
       {:else}
         <line x1={r} y1=0 x2={r+10} y2=0
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" />
@@ -33,7 +33,7 @@
     {/each}
 </svg>
 
-<div {selected_datapoint.gene_name} />
+<div {selected_datapoint} />
 
 
 <style>
