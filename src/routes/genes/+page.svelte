@@ -7,10 +7,12 @@
 </div>
 
 <script>
+  fetch('https://vda-lab.github.io/assets/genes.json')
+    .then(res => res.json())
+    .then(data => datapoints = data)
   const width = 600;
   const height = 600;
   const r = 250;
-  export let data;
 </script>
 
 <svg viewBox='0 0 {width} {height}'>
@@ -18,6 +20,14 @@
     <line x1=0 y1=0 x2={r} y2=0
     transform="translate({width/2},{height/2}) rotate(5)" />
 </svg>
+
+<div>
+<ul>
+{#each datapoints as d}
+  <li>{d}</li>
+{/each}
+</ul>
+</div>
 
 <style>
   svg {
