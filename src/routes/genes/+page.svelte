@@ -25,7 +25,7 @@
         <line x1={r-10} y1=0 x2={r} y2=0
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
           on:mouseover={function() {selected_datapoint = d}}
-          on:mouseout={function() {selected_datapoint = d}}                       />
+          on:mouseout={function() {selected_datapoint = d}} />
       {:else}
         <line x1={r} y1=0 x2={r+10} y2=0
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" />
