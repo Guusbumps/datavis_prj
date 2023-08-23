@@ -10,17 +10,11 @@
     const width = 600;
     const height = 600;
     const r = 250;
-    const margin = { top: 5, right: 5, bottom: 5, left: 5 };
-    const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
   </script>
   
   <svg viewBox='0 0 {width} {height}'>
-    <g transform="translate({margin.left}, {margin.top})">
-      <circle cx={innerWidth / 2} cy={innerHeight / 2} r={r} stroke="black" stroke-width=1 fill=white/>
-      <path d="M 50 50 A 2 1 -45 0 1 50 150" />
+      <circle cx={width / 2} cy={height / 2} r={r} stroke="black" stroke-width=1 fill=white/>
       
-    </g>
   </svg>
   
   <style>
