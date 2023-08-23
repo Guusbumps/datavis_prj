@@ -18,6 +18,8 @@
   <svg viewBox='0 0 {width} {height}'>
     <g transform="translate({margin.left}, {margin.top})">
       <circle cx={innerWidth / 2} cy={innerHeight / 2} r={r} stroke="black" stroke-width=1 fill=white/>
+      <path d="M 50 50 A 2 1 -45 0 1 50 150" />
+      
     </g>
   </svg>
   
