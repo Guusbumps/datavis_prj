@@ -17,7 +17,6 @@
   let selected_datapoint = '';
   let clicked = 0
   function handleClick(d) {
-    selected_datapoint = "hallo";
     clicked = 1
   }
 </script>
@@ -47,7 +46,7 @@
 </svg>
 
 {#if clicked === 1}
-  <a href='/{d.gene_name}' />
+  <a href='/{selected_datapoint.gene_name}'>poep</a>
 {/if}
 
 <style>
