@@ -29,7 +29,8 @@
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
           on:mouseover={function() {selected_datapoint = d.gene_name}}
           on:mouseout={function() {selected_datapoint = ""}} 
-          on:click={handleClick(d)} />
+          on:click={"location.href='pageurl.html';"}
+ />
       {:else if d.gene_strand === "reverse"}
         <line x1={r} y1=0 x2={r+10} y2=0
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" 
