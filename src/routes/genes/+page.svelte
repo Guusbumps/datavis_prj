@@ -24,7 +24,7 @@
 
 <div>
 <ul>
-{#each data as d}
+{#each datapoints as d}
   <li>{d}</li>
 {/each}
 </ul>
