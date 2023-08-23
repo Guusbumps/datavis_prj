@@ -21,8 +21,13 @@
     <line x1=0 y1=0 x2={r} y2=0
     transform="translate({width/2},{height/2}) rotate(5)" />
     {#each datapoints as d, i}
-      <line x1=0 y1=0 x2={r} y2=0
-        transform="translate({width/2},{height/2}) 360*rotate({i})/datapoints.length" />
+      {#if d.gene_strand === "forward"}
+        <line x1={r-10} y1=0 x2={r} y2=0
+          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" />
+      {:else}
+        <line x1={r} y1=0 x2={r+10} y2=0
+          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" />
+      {/if}
     {/each}
 </svg>
 
@@ -41,7 +46,7 @@
   }
   line {
               stroke: black;
-              stroke-width: 3;
+              stroke-width: 0.5;
       }
   circle {
               stroke: black;
