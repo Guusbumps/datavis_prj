@@ -15,8 +15,8 @@
   const height = 600;
   const r = 250;
   let selected_datapoint = '';
-  function handleClick() {
-    a=3;
+  function handleClick(d) {
+    selected_datapoint = "hallo";
   }
 </script>
 
@@ -29,12 +29,13 @@
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
           on:mouseover={function() {selected_datapoint = d.gene_name}}
           on:mouseout={function() {selected_datapoint = ""}} 
-          on:mousedown={handeClick} />
+          on:click={handleClick(d)} />
       {:else if d.gene_strand === "reverse"}
         <line x1={r} y1=0 x2={r+10} y2=0
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" 
           on:mouseover={function() {selected_datapoint = d.gene_name}}
-          on:mouseout={function() {selected_datapoint = ""}} />
+          on:mouseout={function() {selected_datapoint = ""}}
+          on:click={handleClick(d)} />
       {/if}
     {/each}
     <text x={width/2} y={height/2} font-size=20>
