@@ -7,8 +7,10 @@
 </div>
 
 <script>
+  let datapoints = [];
   fetch('https://vda-lab.github.io/assets/genes.json')
     .then(res => res.json())
+    .then(data => datapoints = data)
   const width = 600;
   const height = 600;
   const r = 250;
