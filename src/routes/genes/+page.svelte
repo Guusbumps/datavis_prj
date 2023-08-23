@@ -10,29 +10,27 @@
   const width = 600;
   const height = 600;
   const r = 250;
-  
-
+  export let data;
 </script>
-  
-  <svg viewBox='0 0 {width} {height}'>
-      <circle cx={width / 2} cy={height / 2} r={r}/>
-      <line x1=0 y1=0 x2={r} y2=0
-      transform="translate({width/2},{height/2}) rotate(5)" />
-  </svg>
-  
-  <style>
-    svg {
-      border: 1px solid black;
-      border-radius: 5px;
-    }
-    line {
-                stroke: black;
-                stroke-width: 3;
-        }
-    circle {
-                stroke: black;
-                stroke-width: 1;
-                fill: white;
-        }
-  </style>
- 
+
+<svg viewBox='0 0 {width} {height}'>
+    <circle cx={width / 2} cy={height / 2} r={r}/>
+    <line x1=0 y1=0 x2={r} y2=0
+    transform="translate({width/2},{height/2}) rotate(5)" />
+</svg>
+
+<style>
+  svg {
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  line {
+              stroke: black;
+              stroke-width: 3;
+      }
+  circle {
+              stroke: black;
+              stroke-width: 1;
+              fill: white;
+      }
+</style>
