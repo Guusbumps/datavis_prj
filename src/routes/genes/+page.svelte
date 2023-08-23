@@ -18,8 +18,7 @@
 
 <svg viewBox='0 0 {width} {height}'>
     <circle cx={width / 2} cy={height / 2} r={r}/>
-    <line x1=0 y1=0 x2={r} y2=0
-    transform="translate({width/2},{height/2}) rotate(5)" />
+    
     {#each datapoints as d, i}
       {#if d.gene_strand === "forward"}
         <line x1={r-10} y1=0 x2={r} y2=0
