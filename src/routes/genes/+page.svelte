@@ -14,7 +14,7 @@
   const width = 600;
   const height = 600;
   const r = 250;
-  let selected_datapoint = undefined;
+  let selected_datapoint = '';
 </script>
 
 <svg viewBox='0 0 {width} {height}'>
@@ -26,15 +26,17 @@
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
           on:mouseover={function() {selected_datapoint = d.gene_name}}
           on:mouseout={function() {selected_datapoint = d.gene_name}} />
-      {:else}
+      {:else if d.gene_strand === "reverse"}
         <line x1={r} y1=0 x2={r+10} y2=0
-          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" />
+          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" 
+          on:mouseover={function() {selected_datapoint = d.gene_name}}
+          on:mouseout={function() {selected_datapoint = d.gene_name}} />
       {/if}
     {/each}
+    <text x={width/2} y={height/2} font-size=20>
+      {selected_datapoint}
+    </text>
 </svg>
-
-<div {selected_datapoint} />
-
 
 <style>
   svg {
@@ -43,7 +45,8 @@
   }
   line {
               stroke: black;
-              stroke-width: 0.2;
+              stroke-width: 0.33;
+              opacity: 0.5;
       }
   circle {
               stroke: black;
