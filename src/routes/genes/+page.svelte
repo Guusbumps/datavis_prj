@@ -33,7 +33,7 @@
     {/each}
 </svg>
 
-{selected_datapoint.gene_name}
+<div {selected_datapoint.gene_name} />
 
 
 <style>
