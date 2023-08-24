@@ -22,7 +22,6 @@
   let clicked = 0;
   let sluglink = '';
   function handleClick(d) {
-    clicked = 1
     sluglink = d.gene_name
     goto("/genes/" + sluglink)
   }
@@ -51,10 +50,6 @@
       {selected_datapoint}
     </text>
 </svg>
-
-{#if clicked === 1}
-  <a href='/genes/{sluglink}'>poep</a>
-{/if}
 
 <style>
   svg {
