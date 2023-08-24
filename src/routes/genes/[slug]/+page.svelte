@@ -34,7 +34,6 @@
 
 <h1>{data.slug}</h1>
 {JSON.stringify(datapoints[0])}
-{datapoints[0]["gene_id"]}
 <ul>
   {#each datapoints as d, i}
   <li>{d}</li>
