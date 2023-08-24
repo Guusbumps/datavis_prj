@@ -20,8 +20,17 @@
     .then(res => res.json())
     .then(data => datapoints = data)
 
-  export let data;
-  let data_for_slug = datapoints.filter((d) => { return d.gene_name == params.slug})[0]
+  export let data
+  let data_for_slug = datapoints.filter((d) => { return d.gene_name == data.slug})[0];
+  
+
+  function isName(gene) {
+    return gene.gene_name == data.slug;
+  }
+
+  let d_f_s = datapoints.filter(isName);
+
 </script>
 
 <h1>{data.slug}</h1>
+{data_for_slug}

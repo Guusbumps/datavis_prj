@@ -5,4 +5,4 @@ Visualisation project
 <ul>
 <li><a href="/genes">Genes</a></li>
 <li><a href="/interactions">Interactions</a></li>
-</ul>?
+</ul>
