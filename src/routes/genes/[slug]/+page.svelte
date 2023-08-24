@@ -7,6 +7,12 @@
   <li>{d.gene_name}</li>
   {/each}
 </ul> -->
+<!-- menu -->
+<div>
+<a href="/">Home</a>; 
+<a href="/genes">Genes</a>; 
+<a href="/interactions">Interactions</a>
+</div>
 
 <script>
   let datapoints = [];
@@ -18,3 +24,4 @@
 </script>
 
 <h1>{data.slug}</h1>
+{datapoints[0]}

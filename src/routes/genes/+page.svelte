@@ -2,7 +2,8 @@
 
 <!-- menu -->
 <div>
-<a href="/">Home</a>;
+<a href="/">Home</a>; 
+<a href="/genes">Genes</a>; 
 <a href="/interactions">Interactions</a>
 </div>
 
