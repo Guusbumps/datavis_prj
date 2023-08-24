@@ -21,7 +21,10 @@
     .then(data => datapoints = data)
 
   export let data;
+  let data_for_slug = datapoints.filter((d) => { return d.gene_name == params.slug})[0]
 </script>
 
 <h1>{data.slug}</h1>
-{datapoints[0]}
+<ul>
+  <li>{data_for_slug.gene_id}</li>
+</ul>
