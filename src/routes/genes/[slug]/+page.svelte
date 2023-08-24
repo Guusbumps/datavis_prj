@@ -28,9 +28,15 @@
     return gene.gene_name == data.slug;
   }
 
-  let d_f_s = datapoints.filter(isName);
+  let d_f_s = datapoints.filter(isName)[0];
 
 </script>
 
 <h1>{data.slug}</h1>
-{data_for_slug}
+{d_f_s}
+{datapoints[0]}
+<ul>
+  {#each datapoints as d, i}
+  <li>{d}</li>
+  {/each}
+</ul>
