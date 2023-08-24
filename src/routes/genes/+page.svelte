@@ -46,7 +46,7 @@
 </svg>
 
 {#if clicked === 1}
-  <a href='/genes/{selected_datapoint.gene_name}'>poep</a>
+  <a href='/genes/fucA'>poep</a>
 {/if}
 
 <style>

@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   export let data;
 </script>
 
@@ -6,4 +6,6 @@
   {#each data as d}
   <li>{d.gene_name}</li>
   {/each}
-</ul>
+</ul> -->
+
+hallo
