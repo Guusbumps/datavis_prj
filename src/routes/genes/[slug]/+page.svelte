@@ -14,11 +14,7 @@
     .then(res => res.json())
     .then(data => datapoints = data)
 
-  let myvar = params.slug
+  let myvar = params.slug;
 </script>
 
-
-<ul>
-  <li>hallo</li>
-  <li>{myvar}</li>
-</ul>
+hallo
