@@ -25,22 +25,30 @@
   
   export let data
 
-  let data_for_slug = datapoints2.filter((d) => { return d.gene_name == data.slug})[0];
-  
+  let data_for_slug = datapoints2.filter((d) => { return d.gene_name === "thrL"})[0];
+
   function isName(gene) {
-    return gene.gene_name == data.slug;
+    console.log("hallo");
+    return gene.gene_name === data.slug;
   }
 
   let d_f_s = datapoints2.filter(isName)[0];
-
 </script>
 
 <h1>{data.slug}</h1>
 
-{data_for_slug}
-
 <ul>
-  {#each datapoints2 as d, i}
-  <li>{d.gene_name}</li>
+  {#each datapoints2 as d}
+    {#if d.gene_name===data.slug}
+      <li>ID: <b>{d.gene_id}</b></li>
+      <li>Blattner number: <b>{d.gene_blattner}</b></li>
+      <li>Start: <b>{d.gene_start}</b></li>
+      <li>Stop: <b>{d.gene_stop}</b></li>
+      <li>Strand: <b>{d.gene_strand}</b></li>
+      <li>Product: <b>{d.gene_product}</b></li>
+      <li>Confidence: <b>{d.gene_confidence}</b></li>
+      <li>Evidence: <b>{d.gene_evidence}</b></li>
+      <li>RegulonDB link:<b></b></li>
+    {/if}  
   {/each}
 </ul>
