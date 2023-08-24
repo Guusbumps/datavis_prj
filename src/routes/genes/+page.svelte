@@ -8,6 +8,8 @@
 </div>
 
 <script>
+  import { goto } from '$app/navigation';
+
   let datapoints = [];
   fetch('https://vda-lab.github.io/assets/genes.json')
     .then(res => res.json())
@@ -22,6 +24,7 @@
   function handleClick(d) {
     clicked = 1
     sluglink = d.gene_name
+    goto("/genes/" + sluglink)
   }
 </script>
 
