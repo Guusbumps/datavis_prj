@@ -25,6 +25,3 @@
 </script>
 
 <h1>{data.slug}</h1>
-<ul>
-  <li>{data_for_slug.gene_id}</li>
-</ul>
