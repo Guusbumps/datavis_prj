@@ -17,9 +17,11 @@
   const height = 600;
   const r = 250;
   let selected_datapoint = '';
-  let clicked = 0
+  let clicked = 0;
+  let sluglink = '';
   function handleClick(d) {
     clicked = 1
+    sluglink = d.gene_name
   }
 </script>
 
@@ -48,7 +50,7 @@
 </svg>
 
 {#if clicked === 1}
-  <a href='/genes/fucA'>poep</a>
+  <a href='/genes/{sluglink}'>poep</a>
 {/if}
 
 <style>

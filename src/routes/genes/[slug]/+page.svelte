@@ -25,14 +25,7 @@
   
   export let data
 
-  let data_for_slug = datapoints2.filter((d) => { return d.gene_name === "thrL"})[0];
-
-  function isName(gene) {
-    console.log("hallo");
-    return gene.gene_name === data.slug;
-  }
-
-  let d_f_s = datapoints2.filter(isName)[0];
+  //let data_for_slug = datapoints2.filter((d) => { return d.gene_name === "thrL"})[0];
 </script>
 
 <h1>{data.slug}</h1>
