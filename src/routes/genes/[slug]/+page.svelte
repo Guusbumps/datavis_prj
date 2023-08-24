@@ -24,7 +24,8 @@
   })
   
   export let data
-  // let data_for_slug = datapoints.filter((d) => { return d.gene_name == data.slug})[0];
+
+  let data_for_slug = datapoints2.filter((d) => { return d.gene_name == data.slug})[0];
   
   function isName(gene) {
     return gene.gene_name == data.slug;
@@ -35,10 +36,11 @@
 </script>
 
 <h1>{data.slug}</h1>
-{datapoints2[0]}
+
+{data_for_slug}
 
 <ul>
   {#each datapoints2 as d, i}
-  <li>{d}</li>
+  <li>{d.gene_name}</li>
   {/each}
 </ul>
