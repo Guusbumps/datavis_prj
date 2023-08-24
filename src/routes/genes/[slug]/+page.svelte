@@ -13,9 +13,12 @@
   fetch('https://vda-lab.github.io/assets/genes.json')
     .then(res => res.json())
     .then(data => datapoints = data)
+
+  let myvar = params.slug
 </script>
 
 
 <ul>
-  <li>{params.slug}</li>
+  <li>hallo</li>
+  <li>{myvar}</li>
 </ul>
