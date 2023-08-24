@@ -14,7 +14,7 @@
     .then(res => res.json())
     .then(data => datapoints = data)
 
-  let myvar = params.slug;
+  export let data;
 </script>
 
-hallo
+<h1>{data.slug}</h1>
