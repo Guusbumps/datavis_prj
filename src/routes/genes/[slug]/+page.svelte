@@ -18,10 +18,10 @@
   let datapoints = [];
   fetch('https://vda-lab.github.io/assets/genes.json')
     .then(res => res.json())
-    .then(data => datapoints = data)
+    .then(data2 => datapoints = data2)
 
   export let data
-  let data_for_slug = datapoints.filter((d) => { return d.gene_name == data.slug})[0];
+  // let data_for_slug = datapoints.filter((d) => { return d.gene_name == data.slug})[0];
   
 
   function isName(gene) {
@@ -33,8 +33,8 @@
 </script>
 
 <h1>{data.slug}</h1>
-{d_f_s}
-{datapoints[0]}
+{JSON.stringify(datapoints[0])}
+{datapoints[0]["gene_id"]}
 <ul>
   {#each datapoints as d, i}
   <li>{d}</li>
