@@ -8,4 +8,14 @@
   {/each}
 </ul> -->
 
-hallo
+<script>
+  let datapoints = [];
+  fetch('https://vda-lab.github.io/assets/genes.json')
+    .then(res => res.json())
+    .then(data => datapoints = data)
+</script>
+
+
+<ul>
+  <li>{params.slug}</li>
+</ul>
