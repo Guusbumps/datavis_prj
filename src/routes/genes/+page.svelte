@@ -25,6 +25,19 @@
     sluglink = d.gene_name
     goto("/genes/" + sluglink)
   }
+
+  let gene_color = "black";
+	let gene_opacity = 0.5;
+  function handleMouseOver(d) {
+    selected_datapoint = d.gene_name;
+		gene_color = 'red';
+    gene_opacity = 1.0;
+	}
+	function handleMouseOut(d) {
+    selected_datapoint = "";
+		gene_color = 'black';
+    gene_opacity = 0.5;
+	}
 </script>
 
 <svg viewBox='0 0 {width} {height}'>
@@ -33,9 +46,11 @@
     {#each datapoints as d, i}
       {#if d.gene_strand === "forward"}
         <line x1={r-10} y1=0 x2={r} y2=0
+          color = {gene_color}
+          opacity = {gene_opacity}
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
-          on:mouseover={function() {selected_datapoint = d.gene_name}}
-          on:mouseout={function() {selected_datapoint = ""}} 
+          on:mouseover={handleMouseOver(d)}
+          on:mouseout={handleMouseOut(d)} 
           on:click={handleClick(d)}
  />
       {:else if d.gene_strand === "reverse"}
