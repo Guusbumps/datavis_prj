@@ -1,12 +1,4 @@
-<!-- <script>
-  export let data;
-</script>
 
-<ul>
-  {#each data as d}
-  <li>{d.gene_name}</li>
-  {/each}
-</ul> -->
 <!-- menu -->
 <div>
 <a href="/">Home</a>; 
@@ -40,7 +32,15 @@
       <li>Strand: <b>{d.gene_strand}</b></li>
       <li>Product: <b>{d.gene_product}</b></li>
       <li>Confidence: <b>{d.gene_confidence}</b></li>
-      <li>Evidence: <b>{d.gene_evidence}</b></li>
+      <li>Evidence: 
+        {#if d.gene_evidence}
+          <ul>
+          {#each d.gene_evidence.split(",") as e}
+            <li><b>{e.slice(1,-1)}</b></li>
+          {/each}
+          </ul>
+        {/if}
+      </li>
       <li>RegulonDB link:<b></b></li>
     {/if}  
   {/each}
