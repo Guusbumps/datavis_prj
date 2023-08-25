@@ -55,10 +55,12 @@
         <line x1={r} y1=0 x2={r+10} y2=0
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
           on:mouseover={handleMouseOver(d)}
-          on:mouseout={handleMouseOut(d)} 
-          on:click={handleClick(d)} />
+          on:mouseout={handleMouseOut(d)}
+          on:click={handleClick(d)}
+          class:selected="{selected_datapoint && d.gene_name == selected_datapoint}" />
       {/if}
     {/each}
+    
     <text x={width/2} y={height/2} font-size=20>
       {selected_datapoint}
     </text>
