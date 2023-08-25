@@ -1,6 +1,12 @@
 <script>
-const width = 600;
-const height = 600;
+	const width = 600;
+	const height = 600;
+
+  let datapoints = [];
+  fetch('https://vda-lab.github.io/assets/genes.json')
+    .then(res => res.json())
+    .then(data => datapoints = data)
+
 </script>
 
 <h1>Guus Spenkelink - UHasselt - 2056061</h1>
