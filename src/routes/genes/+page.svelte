@@ -40,28 +40,6 @@
 	}
 </script>
 
-<style>
-  svg {
-    border: 1px solid black;
-    border-radius: 5px;
-  }
-  line {
-              stroke: black;
-              stroke-width: 0.33;
-              opacity: 0.5;
-      }
-  line.selected {
-              stroke: red;
-              stroke-width: 1;
-              opacity: 1;
-  }
-  circle {
-              stroke: black;
-              stroke-width: 1;
-              fill: white;
-      }
-</style>
-
 <svg viewBox='0 0 {width} {height}'>
     <circle cx={width / 2} cy={height / 2} r={r}/>
 
@@ -85,3 +63,26 @@
       {selected_datapoint}
     </text>
 </svg>
+
+
+<style>
+  svg {
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  line {
+              stroke: black;
+              stroke-width: 0.33;
+              opacity: 0.5;
+      }
+  line.selected {
+              stroke: red;
+              stroke-width: 3;
+              opacity: 1;
+  }
+  circle {
+              stroke: black;
+              stroke-width: 1;
+              fill: white;
+      }
+</style>
