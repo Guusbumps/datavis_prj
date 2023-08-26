@@ -2,10 +2,13 @@
 	const width = 600;
 	const height = 600;
 
+
   let datapoints = [];
+	onMount(() => {
   fetch('https://vda-lab.github.io/assets/genes.json')
     .then(res => res.json())
     .then(data => datapoints = data)
+	})
 
 	let regulators = 0;
 	let workhorses = 0;
@@ -24,7 +27,8 @@
 		return managers
   }
 
-	const step = datapoints.length
+	const step = datapoints.length;
+	console.log(step)
 
 </script>
 
@@ -41,17 +45,17 @@
 	{#each datapoints as d, i}
 		{#if d.axes === "regulator"}
 			
-			<circle cx={50+5*add_reg()} cy=0 r=2 fill='red'
+			<circle cx={50+step*add_reg()} cy=0 r=2 fill='red'
 				transform="translate({width/2},{height/2}) rotate(-90)"
 			/>
 		{/if}
 		{#if d.axes === "manager"}
-			<circle cx={50+5*add_man()} cy=0 r=2 fill='yellow'
+			<circle cx={50+step*add_man()} cy=0 r=2 fill='yellow'
 				transform="translate({width/2},{height/2}) rotate(30)"
 			/>
 		{/if}
 		{#if d.axes === "workhorse"}
-			<circle cx={50+5*add_wh()} cy=0 r=2 fill='green'
+			<circle cx={50+step*add_wh()} cy=0 r=2 fill='green'
 				transform="translate({width/2},{height/2}) rotate(150)"
 			/>
 		{/if}
