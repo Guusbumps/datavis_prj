@@ -93,6 +93,9 @@
 	{#each datapoints_int as d2, i (i)}
 		{#if get_xy(d2.from_ngn)}
 			{#if get_xy(d2.to_ngn)}
+				<path d="M {get_xy(d2.from_ngn).x},{get_xy(d2.from_ngn).y} 
+				Q 100,20 
+				{get_xy(d2.to_ngn).x},{get_xy(d2.to_ngn).y}" />
 				<line x1="{get_xy(d2.from_ngn).x}" y1="{get_xy(d2.from_ngn).y}"
 				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}"
         on:click={handleClick(i)} />
