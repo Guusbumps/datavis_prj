@@ -72,6 +72,15 @@
 
 	const step = 300/201;
 
+  let selected_line = 0;
+
+  function handleMouseOver(i) {
+    selected_line = i;
+	}
+	function handleMouseOut(i) {
+    selected_line = 0;
+	}
+
 </script>
 
 <h1>Guus Spenkelink - UHasselt - 2056061</h1>
@@ -85,19 +94,22 @@
 
 <svg viewBox='0 0 {width} {height}'>
 
-	{#each datapoints_int as d2}
+	{#each datapoints_int as d2, i}
 		{#if get_xy(d2.from_ngn)}
 			{#if get_xy(d2.to_ngn)}
 				<line x1="{get_xy(d2.from_ngn).x}" y1="{get_xy(d2.from_ngn).y}"
-				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}">
-		</line>
+				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}"
+				on:mouseover={handleMouseOver(i)}
+        on:mouseout={handleMouseOut(i)}
+        on:click={handleClick(d2)}
+				class:selected="{selected_line && selected_line == i}">
+				</line>
 			{/if}
 		{/if}
 	{/each}
 
 	{#each datapoints as d, i}
 		{#if d.axes === "regulator"}
-			
 			<circle cx={50+step*add_reg()} cy=0 r=2 fill='red'
 				transform="translate({width/2},{height/2}) rotate(-90)"
 			/>
@@ -115,17 +127,7 @@
 	{/each}
 </svg>
 
-
-
-<ul>
-{#each datapoints_int as d2}
-	{#if get_xy(d2.from_ngn)}
-		{#if get_xy(d2.to_ngn)}
-			<li>{d2.from_ngn}-{d2.to_ngn}:{get_xy(d2.from_ngn).x}-{get_xy(d2.to_ngn).y}</li>
-		{/if}
-	{/if}
-{/each}
-</ul>
+{selected_line}
 
 <style>
   svg {
@@ -139,7 +141,7 @@
       }
   line.selected {
               stroke: red;
-              stroke-width: 3;
+              stroke-width: 10;
               opacity: 1;
   }
 </style>
