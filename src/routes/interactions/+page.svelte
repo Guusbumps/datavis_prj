@@ -99,11 +99,11 @@
 		let dxy = undefined;
 		const r = 150
 		dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4)
-		if (x2 > x1 && x1 == width/2) {
+		if (x2 > x1 && Math.abs(x1-width/2)<1 {
 			xc = (x1+x2)/2+dxy
 			yc = (y1+y2)/2+dxy
 		}
-		else if (x2 < x1 && x1 == width/2) {
+		else if (x2 < x1 && Math.abs(x1-width/2)<1 {
 			xc = (x1+x2)/2+dxy
 			yc = (y1+y2)/2-dxy
 		}
