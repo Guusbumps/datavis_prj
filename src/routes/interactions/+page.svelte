@@ -41,10 +41,10 @@
 	function get_axes(ngn) {
 		let data_f = datapoints.filter((d) => { return d.ngn == ngn})
 		if (data_f.length > 0) {
-			return data_f[0].axes}}
+			return data_f[0].axes}
 		else {
 			return ''
-		}
+		}}
 
 	function get_xy(ngn) {
 		let x = 0
