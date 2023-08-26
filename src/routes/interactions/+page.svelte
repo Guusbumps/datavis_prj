@@ -93,26 +93,37 @@
 	// 	return {xc: (x1+x2)/2, yc: (y1+y2)/2}
 	// }
 
-	function get_xy_contr(x1,y1,x2,y2) {
+	function get_xy_contr(x1,y1,x2,y2,interaction_type) {
 		let xc = undefined;
 		let yc = undefined;
-		// let dxy = undefined;;
 		const r = 150;
-		let dz = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4)
-		let dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4)
+		let dz = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
+		let dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
 		if (x2 > x1 && Math.abs(x1-width/2)<1) {
-			xc = (x1+x2)/2+dxy
-			yc = (y1+y2)/2-dxy
+			xc = (x1+x2)/2+dxy;
+			yc = (y1+y2)/2-dxy;
 		}
 		else if (x2 < x1 && Math.abs(x1-width/2)<1) {
-			xc = (x1+x2)/2-dxy
-			yc = (y1+y2)/2-dxy
+			xc = (x1+x2)/2-dxy;
+			yc = (y1+y2)/2-dxy;
 		}
 		else {
-			xc = (x1+x2)/2
-			yc = (y1+y2)/2+dz
+			xc = (x1+x2)/2;
+			yc = (y1+y2)/2+dz;
 		}
 		return {xc: xc, yc: yc}
+	}
+
+	function get_interaction_type(from_axes, to_axes) {
+		if (from_axes == "regulator" && to_axes == "manager") {
+			return 'ur'
+		}
+		else if (from_axes == "manager" && to_axes == "workhorse") {
+			return 'l'
+		}
+		else {
+			return 'ul'
+		}
 	}
 
 	function handleClick(i) {
@@ -142,9 +153,11 @@
 					<path d="M {get_xy(d2.from_ngn).x},{get_xy(d2.from_ngn).y} 
 					
 					Q {get_xy_contr(get_xy(d2.from_ngn).x, get_xy(d2.from_ngn).y,
-					get_xy(d2.to_ngn).x,get_xy(d2.to_ngn).y).xc},
+					get_xy(d2.to_ngn).x,get_xy(d2.to_ngn).y,
+					get_interaction_type(get_axes(d2.from_ngn), get_axes(d2.to_ngn))).xc},
 					{get_xy_contr(get_xy(d2.from_ngn).x, get_xy(d2.from_ngn).y,
-					get_xy(d2.to_ngn).x,get_xy(d2.to_ngn).y).yc} 
+					get_xy(d2.to_ngn).x,get_xy(d2.to_ngn).y,
+					get_interaction_type(get_axes(d2.from_ngn), get_axes(d2.to_ngn))).yc} 
 					
 					{get_xy(d2.to_ngn).x},{get_xy(d2.to_ngn).y}" />
 				{/if}
