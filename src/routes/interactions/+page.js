@@ -5,7 +5,7 @@ export const load = ({ fetch }) => {
     return data
   }
 
-  const fetchProteins = async () => {
+  const fetchInteractions = async () => {
     const res = await fetch("https://vda-lab.github.io/assets/interactions.json")
     const data = await res.json()
     return data
@@ -13,5 +13,6 @@ export const load = ({ fetch }) => {
 
   return {
     genes: fetchGenes(),
-    interactions: fetchProteins()
+    interactions: fetchInteractions()
   }
+}
