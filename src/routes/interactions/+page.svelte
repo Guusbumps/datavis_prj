@@ -11,6 +11,21 @@
 	let workhorses = 0;
 	let managers = 0;
 
+	function add_reg() {
+    regulators += 1;
+		return regulators
+  }
+	function add_wh() {
+    workhorses += 1;
+		return workhorses
+  }
+	function add_man() {
+    managers += 1;
+		return managers
+  }
+
+	const step = datapoints.length
+
 </script>
 
 <h1>Guus Spenkelink - UHasselt - 2056061</h1>
@@ -25,17 +40,18 @@
 <svg viewBox='0 0 {width} {height}'>
 	{#each datapoints as d, i}
 		{#if d.axes === "regulator"}
-			<circle cx={50+i/100} cy=0 r=2 fill='red'
+			
+			<circle cx={50+5*add_reg()} cy=0 r=2 fill='red'
 				transform="translate({width/2},{height/2}) rotate(-90)"
 			/>
 		{/if}
 		{#if d.axes === "manager"}
-			<circle cx={50+i/100} cy=0 r=2 fill='yellow'
+			<circle cx={50+5*add_man()} cy=0 r=2 fill='yellow'
 				transform="translate({width/2},{height/2}) rotate(30)"
 			/>
 		{/if}
 		{#if d.axes === "workhorse"}
-			<circle cx={50+i/100} cy=0 r=2 fill='green'
+			<circle cx={50+5*add_wh()} cy=0 r=2 fill='green'
 				transform="translate({width/2},{height/2}) rotate(150)"
 			/>
 		{/if}
