@@ -100,7 +100,6 @@
 			{#if get_xy(d2.to_ngn)}
 				<line x1="{get_xy(d2.from_ngn).x}" y1="{get_xy(d2.from_ngn).y}"
 				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}"
-				role="button"
         on:click={handleClick(i)} />
 			{/if}
 		{/if}
