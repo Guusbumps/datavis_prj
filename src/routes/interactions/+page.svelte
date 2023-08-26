@@ -2,14 +2,11 @@
 	const width = 600;
 	const height = 600;
 
-
   let datapoints = [];
-	onMount(() => {
   fetch('https://vda-lab.github.io/assets/genes.json')
     .then(res => res.json())
     .then(data => datapoints = data)
-	})
-
+	
 	let regulators = 0;
 	let workhorses = 0;
 	let managers = 0;
@@ -27,7 +24,7 @@
 		return managers
   }
 
-	const step = datapoints.length;
+	const step = 300/151;
 	console.log(step)
 
 </script>
