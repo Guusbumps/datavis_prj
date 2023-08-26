@@ -37,8 +37,8 @@
 	function get_index_per_axes(ngn) {
 		let axes = datapoints.filter((d) => { return d.ngn == ngn})[0].axes
 		let data_axes = datapoints.filter((d) => { return d.axes == axes})
-		// return data_axes.findIndex( d => d.ngn === ngn );
-		return data_axes.filter( d => d.ngn === ngn );
+		return data_axes.findIndex( d => d.ngn === ngn );
+		// return data_axes.filter( d => d.ngn === ngn )[0].ngn;
 	}
 
 	function get_axes(ngn) {
@@ -89,7 +89,7 @@
 
 <ul>
 {#each datapoints_int as d2}
-		<li>{get_index_per_axes(d2.to_ngn)}</li>
+		<li>{d2.from_ngn}-{d2.to_ngn}:{get_index_per_axes(d2.to_ngn)}</li>
 {/each}
 </ul>
 
