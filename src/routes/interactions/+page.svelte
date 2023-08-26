@@ -103,7 +103,7 @@
 			xc = (x1+x2)/2+dxy;
 			yc = (y1+y2)/2-dxy;
 		}
-		else if (interaction_type == 'l') {
+		else if (interaction_type == 'ul') {
 			xc = (x1+x2)/2-dxy;
 			yc = (y1+y2)/2-dxy;
 		}
