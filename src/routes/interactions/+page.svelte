@@ -79,20 +79,18 @@
 		let yc = undefined;
 		const r = 150
 		if (interaction_type == 'ur') {
-			// xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-			xc = width + Math.cos(Math.PI/6)*r;
-			// yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-			yc = height - Math.sin(Math.PI/6)*r;
+			xc = width/2 + Math.cos(Math.PI/6)*r;
+			yc = height/2 - Math.sin(Math.PI/6)*r;
 		}
 		else if (interaction_type == 'ul') {
 			// xc = (x1+x2)/2-r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 			// yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-			xc = 225
-			yc = 225
+			xc = width/2 - Math.cos(Math.PI/6)*r;
+			yc = height/2 - Math.sin(Math.PI/6)*r;
 		}
 		else {
-			xc = (x1+x2)/2
-			yc = (y1+y2)/2+r
+			xc = width/2
+			yc = height/2 + r;
 		}
 		return {xc: xc, yc: yc}
 	}
