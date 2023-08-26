@@ -38,6 +38,11 @@
 		}
 	}
 
+	function get_axes(ngn) {
+		let data_f = datapoints.filter((d) => { return d.ngn == ngn})
+		if (data_f.length > 0) {
+			return data_f[0].axes}}
+
 	function get_xy(ngn) {
 		let x = 0
 		let y = 0
@@ -85,10 +90,6 @@
 		return {xc: 400, yc: 200}
 	}
 
-	function get_axes(ngn) {
-		return datapoints.filter((d) => { return d.ngn == ngn})[0].axes
-	}
-
 	function handleClick(i) {
     sluglink = i
     goto("/interactions/" + sluglink)
@@ -110,8 +111,7 @@
 <svg viewBox='0 0 {width} {height}'>
 
 	{#each datapoints_int as d2}
-		<!-- {#if get_axes(d2.from_ngn) !== get_axes(d2.to_ngn)} -->
-		{#if 3 == 3}
+		{#if get_axes(d2.from_ngn) !== get_axes(d2.to_ngn)}
 			{#if get_xy(d2.from_ngn)}
 				{#if get_xy(d2.to_ngn)}
 					<path d="M {get_xy(d2.from_ngn).x},{get_xy(d2.from_ngn).y} 
