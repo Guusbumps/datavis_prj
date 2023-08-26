@@ -96,20 +96,21 @@
 	function get_xy_contr(x1,y1,x2,y2) {
 		let xc = undefined;
 		let yc = undefined;
-		let dxy = undefined;
-		const r = 150
-		dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4)
-		if (x2 > x1 && Math.abs(x1-width/2)<1 {
-			xc = (x1+x2)/2+dxy
-			yc = (y1+y2)/2+dxy
-		}
-		else if (x2 < x1 && Math.abs(x1-width/2)<1 {
+		// let dxy = undefined;;
+		const r = 150;
+		let dz = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4)
+		let dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4)
+		if (x2 > x1 && Math.abs(x1-width/2)<1) {
 			xc = (x1+x2)/2+dxy
 			yc = (y1+y2)/2-dxy
 		}
-		else {
+		else if (x2 < x1 && Math.abs(x1-width/2)<1) {
 			xc = (x1+x2)/2-dxy
-			yc = (y1+y2)/2+dxy
+			yc = (y1+y2)/2-dxy
+		}
+		else {
+			xc = (x1+x2)/2
+			yc = (y1+y2)/2+dz
 		}
 		return {xc: xc, yc: yc}
 	}
