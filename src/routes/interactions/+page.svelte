@@ -105,10 +105,10 @@
 		}
 		else if (x2 < x1 && x1 == width/2) {
 			xc = (x1+x2)/2+dxy
-			yc = (y1+y2)/2+dxy
+			yc = (y1+y2)/2-dxy
 		}
 		else {
-			xc = (x1+x2)/2+dxy
+			xc = (x1+x2)/2-dxy
 			yc = (y1+y2)/2+dxy
 		}
 		return {xc: xc, yc: yc}
