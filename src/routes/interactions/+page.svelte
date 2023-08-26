@@ -39,13 +39,13 @@
 	}
 
 	function get_xy(ngn) {
+		let x = 0
+		let y = 0
 		let data_f = datapoints.filter((d) => { return d.ngn == ngn})
 		if (data_f.length > 0) {
 			let axes = data_f[0].axes
 			let data_axes = datapoints.filter((d) => { return d.axes == axes})
 			let index = data_axes.findIndex( d => d.ngn === ngn );
-			let x = 0
-			let y = 0
 			if (axes == "regulator") {
 				x = 0
 				y = height/2-(50+index*step)
@@ -104,17 +104,23 @@
 	{/each}
 
 	{#each datapoints_int as d2}
-		<!-- <spread>{get_index_per_axes(d2.from_ngn)}</spread> -->
-		<line x1="{50+step*get_index_per_axes(d2.from_ngn)}" y1="0" 
-		x2="{50+step*get_index_per_axes(d2.to_ngn)}" y2="0"
-		transform="translate({width/2},{height/2}) rotate(150)">
+		{#if get_xy(d2.from_ngn)}
+			{#if get_xy(d2.to_ngn)}
+				<line x1="{get_xy(d2.from_ngn).x}" y1="{get_xy(d2.from_ngn).y}"
+				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}">
 		</line>
+			{/if}
+		{/if}
 	{/each}
 </svg>
 
 <ul>
 {#each datapoints_int as d2}
-		<li>{d2.from_ngn}-{d2.to_ngn}:{get_xy(d2.from_ngn).x}-{get_xy(d2.to_ngn).y}</li>
+	{#if get_xy(d2.from_ngn)}
+		{#if get_xy(d2.to_ngn)}
+			<li>{d2.from_ngn}-{d2.to_ngn}:{get_xy(d2.from_ngn).x}-{get_xy(d2.to_ngn).y}</li>
+		{/if}
+	{/if}
 {/each}
 </ul>
 
