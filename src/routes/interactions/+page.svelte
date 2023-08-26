@@ -28,17 +28,38 @@
     managers += 1;
 		return managers
   }
-
-	function get_index(ngn) {
-		// return datapoints.filter((d) => { return d.ngn == ngn})[0].ngn
-		return datapoints.findIndex( d => d.ngn === ngn );
+	
+	function get_index_per_axes(ngn) {
+		let data_f = datapoints.filter((d) => { return d.ngn == ngn})
+		if (data_f.length > 0) {
+			let axes = data_f[0].axes
+			let data_axes = datapoints.filter((d) => { return d.axes == axes})
+			return data_axes.findIndex( d => d.ngn === ngn );
+		}
 	}
 
-	function get_index_per_axes(ngn) {
-		let axes = datapoints.filter((d) => { return d.ngn == ngn})[0].axes
-		let data_axes = datapoints.filter((d) => { return d.axes == axes})
-		return data_axes.findIndex( d => d.ngn === ngn );
-		// return data_axes.filter( d => d.ngn === ngn )[0].ngn;
+	function get_xy(ngn) {
+		let data_f = datapoints.filter((d) => { return d.ngn == ngn})
+		if (data_f.length > 0) {
+			let axes = data_f[0].axes
+			let data_axes = datapoints.filter((d) => { return d.axes == axes})
+			let index = data_axes.findIndex( d => d.ngn === ngn );
+			if (axes == "regulator") {
+				let x = 0
+				let y = height/2-(50+index*step)
+			}
+			else if (axes == "workhorse") {
+				let x1 = width/2-(50+index*step)
+				let y1 = 1
+				let x = 3
+				let y = 3
+			}
+			else if (axes == "manager") {
+				let x = 1
+				let y = 1
+			}
+			return {x: x, y: y}
+		}
 	}
 
 	function get_axes(ngn) {
@@ -80,8 +101,8 @@
 
 	{#each datapoints_int as d2}
 		<!-- <spread>{get_index_per_axes(d2.from_ngn)}</spread> -->
-		<line x1="{50+step*get_index(d2.from_ngn)}" y1="0" 
-		x2="{50+step*get_index(d2.to_ngn)}" y2="0"
+		<line x1="{50+step*get_index_per_axes(d2.from_ngn)}" y1="0" 
+		x2="{50+step*get_index_per_axes(d2.to_ngn)}" y2="0"
 		transform="translate({width/2},{height/2}) rotate(150)">
 		</line>
 	{/each}
@@ -89,7 +110,7 @@
 
 <ul>
 {#each datapoints_int as d2}
-		<li>{d2.from_ngn}-{d2.to_ngn}:{get_index_per_axes(d2.to_ngn)}</li>
+		<li>{d2.from_ngn}-{d2.to_ngn}:{get_index_per_axes(d2.from_ngn)}-{get_index_per_axes(d2.to_ngn)}</li>
 {/each}
 </ul>
 
