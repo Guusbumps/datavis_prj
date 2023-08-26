@@ -90,7 +90,7 @@
 			xc = (x1+x2)/2-r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 			yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 		}
-		return {xc: 400, yc: 200}
+		return {xc: (x1+x2)/2, yc: (y1+y2)/2}
 	}
 
 	function handleClick(i) {
