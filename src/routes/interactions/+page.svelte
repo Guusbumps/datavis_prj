@@ -45,6 +45,7 @@
 <svg viewBox='0 0 {width} {height}'>
 	{#each datapoints_int as di}
     {#each datapoints_g as dg}
+			console.log({dg.gene_id})
       {#if di.from_id === dg.gene_id}
         {#if dg.axes === "regulator"}
 			    <circle cx={50+step*add_reg()} cy=0 r=2 fill='red'
@@ -53,24 +54,6 @@
 		    {/if}
       {/if}
     {/each}
-		{#if d.axes === "regulator"}
-			
-			<circle cx={50+step*add_reg()} cy=0 r=2 fill='red'
-				transform="translate({width/2},{height/2}) rotate(-90)"
-			/>
-		{/if}
-		{#if d.axes === "manager"}
-			<circle cx={50+step*add_man()} cy=0 r=2 fill='yellow'
-				transform="translate({width/2},{height/2}) rotate(30)"
-			/>
-		{/if}
-		{#if d.axes === "workhorse"}
-			<circle cx={50+step*add_wh()} cy=0 r=2 fill='green'
-				transform="translate({width/2},{height/2}) rotate(150)"
-			/>
-		{/if}
 	{/each}
-	{#each datapoints_int as d2, i}
-	
-	{/each}
+
 </svg>
