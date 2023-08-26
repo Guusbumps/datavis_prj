@@ -93,27 +93,6 @@
 		return {xc: xc, yc: yc}
 	}
 
-	// function get_xy_contr(x1,y1,x2,y2,interaction_type) {
-	// 	let xc = undefined;
-	// 	let yc = undefined;
-	// 	const r = 150;
-	// 	let dz = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
-	// 	let dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
-	// 	if (interaction_type && interaction_type == 'ur') {
-	// 		xc = (x1+x2)/2+dxy;
-	// 		yc = (y1+y2)/2-dxy;
-	// 	}
-	// 	else if (interaction_type && interaction_type == 'ul') {
-	// 		xc = (x1+x2)/2-dxy;
-	// 		yc = (y1+y2)/2-dxy;
-	// 	}
-	// 	else {
-	// 		xc = (x1+x2)/2;
-	// 		yc = (y1+y2)/2+dz;
-	// 	}
-	// 	return {xc: xc, yc: yc}
-	// }
-
 	function get_interaction_type(from_axes, to_axes) {
 		if (from_axes == "regulator" && to_axes == "manager") {
 			return 'ur'
@@ -127,8 +106,7 @@
 	}
 
 	function handleClick(i) {
-    sluglink = i
-    goto("/interactions/" + sluglink)
+    goto("/interactions/" + i)
   }
 
 	const step = 300/201;
@@ -140,8 +118,8 @@
 <!-- menu -->
 <div>
 <a href="/">Home</a>; 
-<a href="/genes">Genes</a>; 
-<a href="/interactions">Interactions</a>
+<a href="/genes">Genes overview</a>; 
+<a href="/interactions">Interactions overview</a>
 </div>
 
 <svg viewBox='0 0 {width} {height}'>
@@ -192,11 +170,6 @@
               stroke-width: 1;
               opacity: 0.3;
       }
-  line:hover {
-              stroke: red;
-              stroke-width: 5;
-              opacity: 0.8;
-  }
 	path {
 							fill: none;
               stroke: black;

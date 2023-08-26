@@ -3,8 +3,8 @@
 <!-- menu -->
 <div>
 <a href="/">Home</a>; 
-<a href="/genes">Genes</a>; 
-<a href="/interactions">Interactions</a>
+<a href="/genes">Genes overview</a>; 
+<a href="/interactions">Interactions overview</a>
 </div>
 
 <script>
