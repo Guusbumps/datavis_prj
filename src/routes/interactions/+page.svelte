@@ -138,4 +138,14 @@
               stroke-width: 5;
               opacity: 0.8;
   }
+	path {
+              stroke: black;
+              stroke-width: 1;
+              opacity: 0.3;
+      }
+  path:hover {
+              stroke: red;
+              stroke-width: 5;
+              opacity: 0.8;
+  }
 </style>
