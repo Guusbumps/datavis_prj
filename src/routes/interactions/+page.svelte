@@ -78,11 +78,11 @@
 		let xc = undefined;
 		let yc = undefined;
 		const r = 150
-		if interaction_type == 'ur' {
+		if (interaction_type == 'ur') {
 			xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 			yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 		}
-		else if interaction_type == 'ul' {
+		else if (interaction_type == 'ul') {
 			xc = (x1+x2)/2-r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 			yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 		}
