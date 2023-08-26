@@ -74,45 +74,45 @@
 		}
 	}
 
-	// function get_xy_contr(x1,y1,x2,y2) {
-	// 	let xc = undefined;
-	// 	let yc = undefined;
-	// 	const r = 5
-	// 	if (x2 > x1 && x1 == width/2) {
-	// 		xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-	// 		yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-	// 	}
-	// 	else if (x2 < x1 && x1 == width/2) {
-	// 		xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-	// 		yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-	// 	}
-	// 	else {
-	// 		xc = (x1+x2)/2-r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-	// 		yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-	// 	}
-	// 	return {xc: (x1+x2)/2, yc: (y1+y2)/2}
-	// }
-
 	function get_xy_contr(x1,y1,x2,y2,interaction_type) {
 		let xc = undefined;
 		let yc = undefined;
-		const r = 150;
-		let dz = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
-		let dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
-		if (interaction_type && interaction_type == 'ur') {
-			xc = (x1+x2)/2+dxy;
-			yc = (y1+y2)/2-dxy;
+		const r = 150
+		if interaction_type == 'ur' {
+			xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+			yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 		}
-		else if (interaction_type && interaction_type == 'ul') {
-			xc = (x1+x2)/2-dxy;
-			yc = (y1+y2)/2-dxy;
+		else if interaction_type == 'ul' {
+			xc = (x1+x2)/2-r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+			yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 		}
 		else {
-			xc = (x1+x2)/2;
-			yc = (y1+y2)/2+dz;
+			xc = (x1+x2)/2
+			yc = (y1+y2)/2+r
 		}
 		return {xc: xc, yc: yc}
 	}
+
+	// function get_xy_contr(x1,y1,x2,y2,interaction_type) {
+	// 	let xc = undefined;
+	// 	let yc = undefined;
+	// 	const r = 150;
+	// 	let dz = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
+	// 	let dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
+	// 	if (interaction_type && interaction_type == 'ur') {
+	// 		xc = (x1+x2)/2+dxy;
+	// 		yc = (y1+y2)/2-dxy;
+	// 	}
+	// 	else if (interaction_type && interaction_type == 'ul') {
+	// 		xc = (x1+x2)/2-dxy;
+	// 		yc = (y1+y2)/2-dxy;
+	// 	}
+	// 	else {
+	// 		xc = (x1+x2)/2;
+	// 		yc = (y1+y2)/2+dz;
+	// 	}
+	// 	return {xc: xc, yc: yc}
+	// }
 
 	function get_interaction_type(from_axes, to_axes) {
 		if (from_axes == "regulator" && to_axes == "manager") {
