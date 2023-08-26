@@ -1,16 +1,21 @@
 <script>
+	import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
+
 	const width = 600;
 	const height = 600;
 
   let datapoints = [];
+	onMount(() => {
   fetch('https://vda-lab.github.io/assets/genes.json')
     .then(res => res.json())
-    .then(data => datapoints = data)
+    .then(data => datapoints = data)})
 
 	let datapoints_int = [];
-  fetch('https://vda-lab.github.io/assets/interactions.json')
+  onMount(() => {
+	fetch('https://vda-lab.github.io/assets/interactions.json')
     .then(res => res.json())
-    .then(data => datapoints_int = data)
+    .then(data => datapoints_int = data)})
 	
 	let regulators = 0;
 	let workhorses = 0;
@@ -70,6 +75,11 @@
 		return datapoints.filter((d) => { return d.ngn == ngn})[0].axes
 	}
 
+	function handleClick(i) {
+    sluglink = i
+    goto("/interactions/" + sluglink)
+  }
+
 	const step = 300/201;
 
 </script>
@@ -85,18 +95,17 @@
 
 <svg viewBox='0 0 {width} {height}'>
 
-	{#each datapoints_int as d2, i}
+	{#each datapoints_int as d2, i (i)}
 		{#if get_xy(d2.from_ngn)}
 			{#if get_xy(d2.to_ngn)}
 				<line x1="{get_xy(d2.from_ngn).x}" y1="{get_xy(d2.from_ngn).y}"
 				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}"
-        on:click={handleClick(d2)}
-				class:selected="{selected_line && selected_line == i}" />
+        on:click={handleClick(i)} />
 			{/if}
 		{/if}
 	{/each}
 
-	{#each datapoints as d, i}
+	{#each datapoints as d}
 		{#if d.axes === "regulator"}
 			<circle cx={50+step*add_reg()} cy=0 r=2 fill='red'
 				transform="translate({width/2},{height/2}) rotate(-90)"
