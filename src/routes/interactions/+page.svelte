@@ -6,6 +6,11 @@
   fetch('https://vda-lab.github.io/assets/genes.json')
     .then(res => res.json())
     .then(data => datapoints = data)
+
+	let datapoints_int = [];
+  fetch('https://vda-lab.github.io/assets/interactions.json')
+    .then(res => res.json())
+    .then(data => datapoints_int = data)
 	
 	let regulators = 0;
 	let workhorses = 0;
