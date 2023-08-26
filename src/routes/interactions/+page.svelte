@@ -2,20 +2,26 @@
 	import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
 
+	export let data = [];
+
 	const width = 600;
 	const height = 600;
 
   let datapoints = [];
-	onMount(() => {
-  fetch('https://vda-lab.github.io/assets/genes.json')
-    .then(res => res.json())
-    .then(data => datapoints = data)})
-
 	let datapoints_int = [];
-  onMount(() => {
-	fetch('https://vda-lab.github.io/assets/interactions.json')
-    .then(res => res.json())
-    .then(data => datapoints_int = data)})
+	datapoints = data.genes;
+	datapoints_int = data.interactions;
+	
+	// onMount(() => {
+  // fetch('https://vda-lab.github.io/assets/genes.json')
+  //   .then(res => res.json())
+  //   .then(data => datapoints = data)})
+
+	// let datapoints_int = [];
+  // onMount(() => {
+	// fetch('https://vda-lab.github.io/assets/interactions.json')
+  //   .then(res => res.json())
+  //   .then(data => datapoints_int = data)})
 	
 	let regulators = 0;
 	let workhorses = 0;
