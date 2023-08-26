@@ -29,6 +29,21 @@
 		return managers
   }
 
+	function get_index(ngn) {
+		// return datapoints.filter((d) => { return d.ngn == ngn})[0].ngn
+		return datapoints.findIndex( d => d.ngn === ngn );
+	}
+
+	function get_index_per_axes(ngn) {
+		let axes = datapoints.filter((d) => { return d.ngn == ngn})[0].axes
+		let data_axes = datapoints.filter((d) => { return d.axes == axes})
+		return data_axes.findIndex( d => d.ngn === ngn );
+	}
+
+	function get_axes(ngn) {
+		return datapoints.filter((d) => { return d.ngn == ngn})[0].axes
+	}
+
 	const step = 300/151;
 
 </script>
@@ -64,5 +79,5 @@
 </svg>
 
 {#each datapoints_int as d2, i}
-		<spread>{d2.from_id}</spread>
-	{/each}
+	<spread>{get_index_per_axes(d2.from_ngn)}</spread>
+{/each}
