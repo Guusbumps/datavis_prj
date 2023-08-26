@@ -74,7 +74,7 @@
 		}
 	}
 
-	function get_xy_contr(x1,y1,x2,y2,interaction_type) {
+	function get_xy_contr(interaction_type) {
 		let xc = undefined;
 		let yc = undefined;
 		const r = 150
@@ -83,8 +83,6 @@
 			yc = height/2 - Math.sin(Math.PI/6)*r;
 		}
 		else if (interaction_type == 'ul') {
-			// xc = (x1+x2)/2-r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-			// yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
 			xc = width/2 - Math.cos(Math.PI/6)*r;
 			yc = height/2 - Math.sin(Math.PI/6)*r;
 		}
@@ -153,14 +151,10 @@
 			{#if get_xy(d2.from_ngn)}
 				{#if get_xy(d2.to_ngn)}
 					<path d="M {get_xy(d2.from_ngn).x},{get_xy(d2.from_ngn).y} 
-					
-					Q {get_xy_contr(get_xy(d2.from_ngn).x, get_xy(d2.from_ngn).y,
-					get_xy(d2.to_ngn).x,get_xy(d2.to_ngn).y,
-					get_interaction_type(get_axes(d2.from_ngn), get_axes(d2.to_ngn))).xc},
-					{get_xy_contr(get_xy(d2.from_ngn).x, get_xy(d2.from_ngn).y,
-					get_xy(d2.to_ngn).x,get_xy(d2.to_ngn).y,
+					Q {get_xy_contr(
+						get_interaction_type(get_axes(d2.from_ngn), get_axes(d2.to_ngn))).xc},
+					{get_xy_contr(
 					get_interaction_type(get_axes(d2.from_ngn), get_axes(d2.to_ngn))).yc} 
-					
 					{get_xy(d2.to_ngn).x},{get_xy(d2.to_ngn).y}" />
 				{/if}
 			{/if}
