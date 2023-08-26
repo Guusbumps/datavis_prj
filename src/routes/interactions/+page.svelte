@@ -66,6 +66,25 @@
 		}
 	}
 
+	function get_xy_contr(x1,y1,x2,y2) {
+		let xc = undefined;
+		let yc = undefined;
+		const r = 150
+		if (x2 > x1 && x1 == width/2) {
+			xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+			yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+		}
+		else if (x2 < x1 && x1 == width/2) {
+			xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+			yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+		}
+		else {
+			xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+			yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+		}
+		return {x: xc, y: yc}
+	}
+
 	function get_axes(ngn) {
 		return datapoints.filter((d) => { return d.ngn == ngn})[0].axes
 	}
@@ -94,7 +113,10 @@
 		{#if get_xy(d2.from_ngn)}
 			{#if get_xy(d2.to_ngn)}
 				<path d="M {get_xy(d2.from_ngn).x},{get_xy(d2.from_ngn).y} 
-				Q 100,20 
+				Q {get_xy_contr(get_xy(d2.from_ngn).x, get_xy(d2.from_ngn).y,
+				get_xy(d2.to_ngn).x,get_xy(d2.to_ngn).y).x},
+				{get_xy_contr(get_xy(d2.from_ngn).x, get_xy(d2.from_ngn).y,
+				get_xy(d2.to_ngn).x,get_xy(d2.to_ngn).y).y}
 				{get_xy(d2.to_ngn).x},{get_xy(d2.to_ngn).y}" />
 				<line x1="{get_xy(d2.from_ngn).x}" y1="{get_xy(d2.from_ngn).y}"
 				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}"
