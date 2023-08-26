@@ -99,11 +99,11 @@
 		const r = 150;
 		let dz = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
 		let dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4);
-		if (interaction_type == 'ur') {
+		if (interaction_type && interaction_type == 'ur') {
 			xc = (x1+x2)/2+dxy;
 			yc = (y1+y2)/2-dxy;
 		}
-		else if (interaction_type == 'ul') {
+		else if (interaction_type && interaction_type == 'ul') {
 			xc = (x1+x2)/2-dxy;
 			yc = (y1+y2)/2-dxy;
 		}
