@@ -11,7 +11,18 @@
 	let datapoints_int = [];
 	datapoints = data.genes;
 	datapoints_int = data.interactions;
-		
+	
+	// onMount(() => {
+  // fetch('https://vda-lab.github.io/assets/genes.json')
+  //   .then(res => res.json())
+  //   .then(data => datapoints = data)})
+
+	// let datapoints_int = [];
+  // onMount(() => {
+	// fetch('https://vda-lab.github.io/assets/interactions.json')
+  //   .then(res => res.json())
+  //   .then(data => datapoints_int = data)})
+	
 	let regulators = 0;
 	let workhorses = 0;
 	let managers = 0;
