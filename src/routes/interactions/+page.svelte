@@ -110,7 +110,8 @@
 <svg viewBox='0 0 {width} {height}'>
 
 	{#each datapoints_int as d2}
-		{#if get_axes(d2.from_ngn) !== get_axes(d2.to_ngn)}
+		<!-- {#if get_axes(d2.from_ngn) !== get_axes(d2.to_ngn)} -->
+		{#if 3 == 3}
 			{#if get_xy(d2.from_ngn)}
 				{#if get_xy(d2.to_ngn)}
 					<path d="M {get_xy(d2.from_ngn).x},{get_xy(d2.from_ngn).y} 
