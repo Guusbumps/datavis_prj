@@ -146,7 +146,7 @@
 
 <svg viewBox='0 0 {width} {height}'>
 
-	{#each datapoints_int as d2, i}
+	{#each datapoints_int as d2, i (i)}
 		{#if get_axes(d2.from_ngn) !== get_axes(d2.to_ngn)}
 			{#if get_xy(d2.from_ngn)}
 				{#if get_xy(d2.to_ngn)}
