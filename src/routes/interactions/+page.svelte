@@ -7,6 +7,10 @@
     .then(res => res.json())
     .then(data => datapoints = data)
 
+	let regulators = 0;
+	let workhorses = 0;
+	let managers = 0;
+
 </script>
 
 <h1>Guus Spenkelink - UHasselt - 2056061</h1>
@@ -19,5 +23,11 @@
 </div>
 
 <svg viewBox='0 0 {width} {height}'>
-  	<circle cx={width / 2} cy={height / 2} r=30/>
+	{#each datapoints as d, i}
+		{#if d.axes === "regulator"}
+			<circle cx={50+i/100} cy=0 r=2 fill='red'
+				transform="translate({width/2},{height/2}) rotate(-90)"
+			/>
+		{/if}
+	{/each}
 </svg>
