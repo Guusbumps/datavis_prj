@@ -2,10 +2,10 @@
 	const width = 600;
 	const height = 600;
 
-  let datapoints_g = [];
+  let datapoints = [];
   fetch('https://vda-lab.github.io/assets/genes.json')
     .then(res => res.json())
-    .then(data => datapoints_g = data)
+    .then(data => datapoints = data)
 
 	let datapoints_int = [];
   fetch('https://vda-lab.github.io/assets/interactions.json')
@@ -30,6 +30,7 @@
   }
 
 	const step = 300/151;
+	console.log(step)
 
 </script>
 
@@ -43,16 +44,7 @@
 </div>
 
 <svg viewBox='0 0 {width} {height}'>
-	{#each datapoints_int as di}
-    {#each datapoints_g as dg}
-      {#if di.from_id === dg.gene_id}
-        {#if dg.axes === "regulator"}
-			    <circle cx={50+step*add_reg()} cy=0 r=2 fill='red'
-				  transform="translate({width/2},{height/2}) rotate(-90)" />
-          console.log('gevonden')
-		    {/if}
-      {/if}
-    {/each}
+	{#each datapoints as d, i}
 		{#if d.axes === "regulator"}
 			
 			<circle cx={50+step*add_reg()} cy=0 r=2 fill='red'
