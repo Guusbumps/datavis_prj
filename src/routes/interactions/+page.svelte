@@ -42,6 +42,9 @@
 		let data_f = datapoints.filter((d) => { return d.ngn == ngn})
 		if (data_f.length > 0) {
 			return data_f[0].axes}}
+		else {
+			return ''
+		}
 
 	function get_xy(ngn) {
 		let x = 0
@@ -122,7 +125,6 @@
 					get_xy(d2.to_ngn).x,get_xy(d2.to_ngn).y).yc} 
 					
 					{get_xy(d2.to_ngn).x},{get_xy(d2.to_ngn).y}" />
-					
 				{/if}
 			{/if}
 		{/if}
