@@ -29,5 +29,15 @@
 				transform="translate({width/2},{height/2}) rotate(-90)"
 			/>
 		{/if}
+		{#if d.axes === "manager"}
+			<circle cx={50+i/100} cy=0 r=2 fill='yellow'
+				transform="translate({width/2},{height/2}) rotate(30)"
+			/>
+		{/if}
+		{#if d.axes === "workhorse"}
+			<circle cx={50+i/100} cy=0 r=2 fill='green'
+				transform="translate({width/2},{height/2}) rotate(150)"
+			/>
+		{/if}
 	{/each}
 </svg>
