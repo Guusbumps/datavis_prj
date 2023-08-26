@@ -70,7 +70,7 @@
 		return datapoints.filter((d) => { return d.ngn == ngn})[0].axes
 	}
 
-	const step = 300/151;
+	const step = 300/201;
 
 </script>
 
@@ -134,8 +134,8 @@
   }
   line {
               stroke: black;
-              stroke-width: 0.33;
-              opacity: 0.5;
+              stroke-width: 1;
+              opacity: 0.3;
       }
   line.selected {
               stroke: red;
