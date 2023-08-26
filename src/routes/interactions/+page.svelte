@@ -146,7 +146,7 @@
 
 <svg viewBox='0 0 {width} {height}'>
 
-	{#each datapoints_int as d2}
+	{#each datapoints_int as d2, i}
 		{#if get_axes(d2.from_ngn) !== get_axes(d2.to_ngn)}
 			{#if get_xy(d2.from_ngn)}
 				{#if get_xy(d2.to_ngn)}
@@ -155,7 +155,8 @@
 						get_interaction_type(get_axes(d2.from_ngn), get_axes(d2.to_ngn))).xc},
 					{get_xy_contr(
 					get_interaction_type(get_axes(d2.from_ngn), get_axes(d2.to_ngn))).yc} 
-					{get_xy(d2.to_ngn).x},{get_xy(d2.to_ngn).y}" />
+					{get_xy(d2.to_ngn).x},{get_xy(d2.to_ngn).y}" 
+					on:click={handleClick(i)}/>
 				{/if}
 			{/if}
 		{/if}
