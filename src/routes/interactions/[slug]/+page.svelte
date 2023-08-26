@@ -20,7 +20,14 @@
 
 </script>
 
-<h1>{data.slug}</h1>
+<h2>Interaction details</h2>
+
+<h3>From</h3>
+  <ul>
+   <li>{datapoints[data.slug]}</li>
+  </ul>
+
+<h3>To</h3>
 
 <!-- <ul>
   {#each datapoints3 as d, i (i)}
