@@ -30,7 +30,6 @@
   }
 
 	const step = 300/151;
-	console.log(step)
 
 </script>
 
@@ -62,7 +61,8 @@
 			/>
 		{/if}
 	{/each}
-	{#each datapoints_int as d2, i}
-	
-	{/each}
 </svg>
+
+{#each datapoints_int as d2, i}
+		<spread>{d2.from_id}</spread>
+	{/each}
