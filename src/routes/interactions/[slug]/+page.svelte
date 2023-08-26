@@ -17,13 +17,12 @@
   
   export let data
 
-  //let data_for_slug = datapoints2.filter((d) => { return d.gene_name === "thrL"})[0];
 </script>
 
 <h1>{data.slug}</h1>
 
-<ul>
-  {#each datapoints3 as d, i}
+<!-- <ul>
+  {#each datapoints3 as d, i (i)}
     {#if i===data.slug}
       <li>ID: <b>{d.gene_id}</b></li>
       <li>Blattner number: <b>{d.gene_blattner}</b></li>
@@ -44,4 +43,4 @@
       <li>RegulonDB link:<b></b></li>
     {/if}  
   {/each}
-</ul>
+</ul> -->
