@@ -44,19 +44,23 @@
 			let axes = data_f[0].axes
 			let data_axes = datapoints.filter((d) => { return d.axes == axes})
 			let index = data_axes.findIndex( d => d.ngn === ngn );
+			let x = 0
+			let y = 0
 			if (axes == "regulator") {
-				let x = 0
-				let y = height/2-(50+index*step)
+				x = 0
+				y = height/2-(50+index*step)
 			}
 			else if (axes == "workhorse") {
 				let x1 = width/2-(50+index*step)
 				let y1 = 1
-				let x = 3
-				let y = 3
+				x = x1*Math.cos(-Math.PI/6)-y1*Math.sin(-Math.PI/6)
+				y = x1*Math.sin(-Math.PI/6)+y1*Math.cos(-Math.PI/6)
 			}
 			else if (axes == "manager") {
-				let x = 1
-				let y = 1
+				let x1 = width/2-(50+index*step)
+				let y1 = 1
+				x = x1*Math.cos(7*Math.PI/6)-y1*Math.sin(7*Math.PI/6)
+				y = x1*Math.sin(7*Math.PI/6)+y1*Math.cos(7*Math.PI/6)
 			}
 			return {x: x, y: y}
 		}
@@ -110,7 +114,7 @@
 
 <ul>
 {#each datapoints_int as d2}
-		<li>{d2.from_ngn}-{d2.to_ngn}:{get_index_per_axes(d2.from_ngn)}-{get_index_per_axes(d2.to_ngn)}</li>
+		<li>{d2.from_ngn}-{d2.to_ngn}:{get_xy(d2.from_ngn).x}-{get_xy(d2.to_ngn).y}</li>
 {/each}
 </ul>
 
