@@ -76,8 +76,34 @@
 			/>
 		{/if}
 	{/each}
+
+	{#each datapoints_int as d2}
+		<!-- <spread>{get_index_per_axes(d2.from_ngn)}</spread> -->
+		<line x1="{50+step*get_index(d2.from_ngn)}" y1="0" 
+		x2="{50+step*get_index(d2.to_ngn)}" y2="0"
+		transform="translate({width/2},{height/2}) rotate(150)">
+		</line>
+	{/each}
 </svg>
 
-{#each datapoints_int as d2, i}
-	<spread>{get_index_per_axes(d2.from_ngn)}</spread>
+{#each datapoints_int as d2}
+		<spread>{get_index_per_axes(d2.from_ngn)}</spread>
 {/each}
+
+
+<style>
+  svg {
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  line {
+              stroke: black;
+              stroke-width: 0.33;
+              opacity: 0.5;
+      }
+  line.selected {
+              stroke: red;
+              stroke-width: 3;
+              opacity: 1;
+  }
+</style>
