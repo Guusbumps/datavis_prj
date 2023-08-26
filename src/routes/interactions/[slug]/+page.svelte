@@ -24,7 +24,7 @@
 
 <h3>From</h3>
   <ul>
-   <li>{datapoints3[data.slug].from_id}</li>
+   <li>{datapoints3[data.slug]}</li>
   </ul>
 
 <h3>To</h3>
