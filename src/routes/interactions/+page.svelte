@@ -71,14 +71,6 @@
 	}
 
 	const step = 300/201;
-	let selected_line = -1;
-
-  function handleMouseOver(i) {
-    selected_line = i;
-	}
-	function handleMouseOut(i) {
-    selected_line = -1;
-	}
 
 </script>
 
@@ -98,11 +90,8 @@
 			{#if get_xy(d2.to_ngn)}
 				<line x1="{get_xy(d2.from_ngn).x}" y1="{get_xy(d2.from_ngn).y}"
 				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}"
-				on:mouseover={handleMouseOver(i)}
-        on:mouseout={handleMouseOut(i)}
         on:click={handleClick(d2)}
 				class:selected="{selected_line && selected_line == i}" />
-				
 			{/if}
 		{/if}
 	{/each}
@@ -126,7 +115,6 @@
 	{/each}
 </svg>
 
-{selected_line}
 
 <style>
   svg {
@@ -138,9 +126,9 @@
               stroke-width: 1;
               opacity: 0.3;
       }
-  line.selected {
+  line:hover {
               stroke: red;
-              stroke-width: 10;
-              opacity: 1;
+              stroke-width: 5;
+              opacity: 0.8;
   }
 </style>
