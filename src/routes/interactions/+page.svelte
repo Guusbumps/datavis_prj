@@ -71,14 +71,13 @@
 	}
 
 	const step = 300/201;
-
-  let selected_line = 0;
+	let selected_line = -1;
 
   function handleMouseOver(i) {
     selected_line = i;
 	}
 	function handleMouseOut(i) {
-    selected_line = 0;
+    selected_line = -1;
 	}
 
 </script>
@@ -102,8 +101,8 @@
 				on:mouseover={handleMouseOver(i)}
         on:mouseout={handleMouseOut(i)}
         on:click={handleClick(d2)}
-				class:selected="{selected_line && selected_line == i}">
-				</line>
+				class:selected="{selected_line && selected_line == i}" />
+				
 			{/if}
 		{/if}
 	{/each}
