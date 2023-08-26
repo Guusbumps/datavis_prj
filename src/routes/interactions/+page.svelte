@@ -74,23 +74,44 @@
 		}
 	}
 
+	// function get_xy_contr(x1,y1,x2,y2) {
+	// 	let xc = undefined;
+	// 	let yc = undefined;
+	// 	const r = 5
+	// 	if (x2 > x1 && x1 == width/2) {
+	// 		xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+	// 		yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+	// 	}
+	// 	else if (x2 < x1 && x1 == width/2) {
+	// 		xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+	// 		yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+	// 	}
+	// 	else {
+	// 		xc = (x1+x2)/2-r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+	// 		yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+	// 	}
+	// 	return {xc: (x1+x2)/2, yc: (y1+y2)/2}
+	// }
+
 	function get_xy_contr(x1,y1,x2,y2) {
 		let xc = undefined;
 		let yc = undefined;
-		const r = 5
+		let dxy = undefined;
+		const r = 150
+		dxy = Math.sqrt(r^2-((x2-x1)^2+(y2-y1)^2)/4)
 		if (x2 > x1 && x1 == width/2) {
-			xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-			yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+			xc = (x1+x2)/2+dxy
+			yc = (y1+y2)/2+dxy
 		}
 		else if (x2 < x1 && x1 == width/2) {
-			xc = (x1+x2)/2+r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-			yc = (y1+y2)/2-r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+			xc = (x1+x2)/2+dxy
+			yc = (y1+y2)/2+dxy
 		}
 		else {
-			xc = (x1+x2)/2-r*Math.abs(y2-y1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
-			yc = (y1+y2)/2+r*Math.abs(x2-x1)/Math.sqrt((x2-x1)^2+(y2-y1)^2)
+			xc = (x1+x2)/2+dxy
+			yc = (y1+y2)/2+dxy
 		}
-		return {xc: (x1+x2)/2, yc: (y1+y2)/2}
+		return {xc: xc, yc: yc}
 	}
 
 	function handleClick(i) {
