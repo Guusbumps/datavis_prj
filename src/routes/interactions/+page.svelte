@@ -47,20 +47,20 @@
 			let data_axes = datapoints.filter((d) => { return d.axes == axes})
 			let index = data_axes.findIndex( d => d.ngn === ngn );
 			if (axes == "regulator") {
-				x = 0
+				x = width/2
 				y = height/2-(50+index*step)
 			}
 			else if (axes == "workhorse") {
-				let x1 = width/2-(50+index*step)
-				let y1 = 1
-				x = x1*Math.cos(-Math.PI/6)-y1*Math.sin(-Math.PI/6)
-				y = x1*Math.sin(-Math.PI/6)+y1*Math.cos(-Math.PI/6)
+				let x1 = (50+index*step)
+				let y1 = 0
+				x = x1*Math.cos(5*Math.PI/6)-y1*Math.sin(5*Math.PI/6)+width/2
+				y = x1*Math.sin(5*Math.PI/6)+y1*Math.cos(5*Math.PI/6)+height/2
 			}
 			else if (axes == "manager") {
-				let x1 = width/2-(50+index*step)
-				let y1 = 1
-				x = x1*Math.cos(7*Math.PI/6)-y1*Math.sin(7*Math.PI/6)
-				y = x1*Math.sin(7*Math.PI/6)+y1*Math.cos(7*Math.PI/6)
+				let x1 = (50+index*step)
+				let y1 = 0
+				x = x1*Math.cos(Math.PI/6)-y1*Math.sin(Math.PI/6)+width/2
+				y = x1*Math.sin(Math.PI/6)+y1*Math.cos(Math.PI/6)+height/2
 			}
 			return {x: x, y: y}
 		}
@@ -84,6 +84,17 @@
 </div>
 
 <svg viewBox='0 0 {width} {height}'>
+
+	{#each datapoints_int as d2}
+		{#if get_xy(d2.from_ngn)}
+			{#if get_xy(d2.to_ngn)}
+				<line x1="{get_xy(d2.from_ngn).x}" y1="{get_xy(d2.from_ngn).y}"
+				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}">
+		</line>
+			{/if}
+		{/if}
+	{/each}
+
 	{#each datapoints as d, i}
 		{#if d.axes === "regulator"}
 			
@@ -102,17 +113,9 @@
 			/>
 		{/if}
 	{/each}
-
-	{#each datapoints_int as d2}
-		{#if get_xy(d2.from_ngn)}
-			{#if get_xy(d2.to_ngn)}
-				<line x1="{get_xy(d2.from_ngn).x}" y1="{get_xy(d2.from_ngn).y}"
-				x2="{get_xy(d2.to_ngn).x}" y2="{get_xy(d2.to_ngn).y}">
-		</line>
-			{/if}
-		{/if}
-	{/each}
 </svg>
+
+
 
 <ul>
 {#each datapoints_int as d2}
