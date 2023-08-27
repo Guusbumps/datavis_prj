@@ -10,10 +10,6 @@
 <script>
   import { goto } from '$app/navigation';
 
-  // let datapoints = [];
-  // fetch('https://vda-lab.github.io/assets/genes.json')
-  //   .then(res => res.json())
-  //   .then(data => datapoints = data)
 	export let data = [];
   let datapoints = [];
 	datapoints = data.genes;
@@ -33,13 +29,9 @@
 	let gene_opacity = 0.5;
   function handleMouseOver(d) {
     selected_datapoint = d.gene_name;
-    // gene_color = 'red';
-    // gene_opacity = 1.0;
 	}
 	function handleMouseOut(d) {
     selected_datapoint = "";
-		// gene_color = 'black';
-    // gene_opacity = 0.5;
 	}
 </script>
 
