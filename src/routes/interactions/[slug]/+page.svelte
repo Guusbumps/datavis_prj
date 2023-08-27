@@ -23,11 +23,25 @@
 <h2>Interaction details</h2>
 
 <h3>From</h3>
+<a href={"/genes/" + data.interactions[data.slug].from_name}> Details </a>
   <ul>
-   <li>{(data.interactions[data.slug])}</li>
+   <li>id:<b>{data.interactions[data.slug].from_id}</b></li>
+   <li>name:<b>{data.interactions[data.slug].from_name}</b></li>
+   <li>gene name:<b>{data.interactions[data.slug].from_gene_name}</b></li>
   </ul>
 
 <h3>To</h3>
+  <ul>
+   <li>id:<b>{data.interactions[data.slug].to_id}</b></li>
+   <li>name:<b>{data.interactions[data.slug].to_name}</b></li>
+   <li>gene name:<b>{data.interactions[data.slug].to_gene_name}</b></li>
+  </ul>
+
+<h3>Interaction</h3>
+  <ul>
+   <li>function:<b>{data.interactions[data.slug].function}</b></li>
+   <li>confidence:<b>{data.interactions[data.slug].confidence}</b></li>
+  </ul>
 
 <!-- <ul>
   {#each datapoints3 as d, i (i)}
