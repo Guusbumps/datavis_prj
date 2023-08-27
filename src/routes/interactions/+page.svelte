@@ -10,6 +10,9 @@
 	const min_r = 50;
 	const step = 300/201;
 
+	const r_gene = 2;
+	const r_contr = 150;
+
   let datapoints = [];
 	let datapoints_int = [];
 	datapoints = data.genes;
@@ -80,19 +83,18 @@
 	function get_xy_contr(interaction_type) {
 		let xc = undefined;
 		let yc = undefined;
-		const r = 150
 
 		if (interaction_type == 'ur') {
-			xc = width/2 + Math.cos(Math.PI/6)*r;
-			yc = height/2 - Math.sin(Math.PI/6)*r;
+			xc = width/2 + Math.cos(Math.PI/6)*r_contr;
+			yc = height/2 - Math.sin(Math.PI/6)*r_contr;
 		}
 		else if (interaction_type == 'ul') {
-			xc = width/2 - Math.cos(Math.PI/6)*r;
-			yc = height/2 - Math.sin(Math.PI/6)*r;
+			xc = width/2 - Math.cos(Math.PI/6)*r_contr;
+			yc = height/2 - Math.sin(Math.PI/6)*r_contr;
 		}
 		else {
 			xc = width/2
-			yc = height/2 + r;
+			yc = height/2 + r_contr;
 		}
 		return {xc: xc, yc: yc}
 	}
@@ -144,17 +146,17 @@
 
 	{#each datapoints as d}
 		{#if d.axes === "regulator"}
-			<circle cx={min_r+step*add_reg()} cy=0 r=2 fill='red'
+			<circle cx={min_r+step*add_reg()} cy=0 r={r_gene} fill='red'
 				transform="translate({width/2},{height/2}) rotate(-90)"
 			/>
 		{/if}
 		{#if d.axes === "manager"}
-			<circle cx={min_r+step*add_man()} cy=0 r=2 fill='yellow'
+			<circle cx={min_r+step*add_man()} cy=0 r={r_gene} fill='yellow'
 				transform="translate({width/2},{height/2}) rotate(30)"
 			/>
 		{/if}
 		{#if d.axes === "workhorse"}
-			<circle cx={min_r+step*add_wh()} cy=0 r=2 fill='green'
+			<circle cx={min_r+step*add_wh()} cy=0 r={r_gene} fill='green'
 				transform="translate({width/2},{height/2}) rotate(150)"
 			/>
 		{/if}
