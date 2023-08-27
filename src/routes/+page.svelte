@@ -3,6 +3,6 @@ Visualisation project
 
 <!-- menu -->
 <ul>
-<li><a href="/genes">Genes</a></li>
-<li><a href="/interactions">Interactions</a></li>
+<li><a href="/interactions">Interactions overview</a></li>
+<li><a href="/genes">Genes overview</a></li>
 </ul>
