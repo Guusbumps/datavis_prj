@@ -8,17 +8,9 @@
 </div>
 
 <script>
-  import { onMount } from 'svelte';
+  export let data;
   let datapoints2 = [];
-  onMount(() => {
-  fetch('https://vda-lab.github.io/assets/genes.json')
-    .then(res => res.json())
-    .then(data2 => datapoints2 = data2)
-  })
-  
-  export let data
-
-  //let data_for_slug = datapoints2.filter((d) => { return d.gene_name === "thrL"})[0];
+	datapoints2 = data.genes;
 </script>
 
 <h1>{data.slug}</h1>
