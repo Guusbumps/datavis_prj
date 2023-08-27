@@ -14,7 +14,9 @@
   // fetch('https://vda-lab.github.io/assets/genes.json')
   //   .then(res => res.json())
   //   .then(data => datapoints = data)
-  export let datapoints = [];
+  let datapoints = [];
+  export let data;
+  datapoints = data
   const width = 600;
   const height = 600;
   const r = 250;
