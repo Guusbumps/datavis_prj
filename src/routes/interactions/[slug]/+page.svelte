@@ -8,13 +8,13 @@
 </div>
 
 <script>
-  import { onMount } from 'svelte';
-  let datapoints3 = [];
-  onMount(() => {
-  fetch('https://vda-lab.github.io/assets/interactions.json')
-    .then(res => res.json())
-    .then(data3 => datapoints3 = data3)
-  })
+  // import { onMount } from 'svelte';
+  // let datapoints3 = [];
+  // onMount(() => {
+  // fetch('https://vda-lab.github.io/assets/interactions.json')
+  //   .then(res => res.json())
+  //   .then(data3 => datapoints3 = data3)
+  // })
   
   export let data
 
@@ -24,7 +24,7 @@
 
 <h3>From</h3>
   <ul>
-   <li>{(datapoints3[data.slug])}</li>
+   <li>{(data.interactions[data.slug])}</li>
   </ul>
 
 <h3>To</h3>
