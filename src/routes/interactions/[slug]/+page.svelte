@@ -22,7 +22,7 @@
   </ul>
 
 <h3>To</h3>
-<a href={"/genes/" + data.interactions[data.slug].to_gene_name}> Details </a>
+<a href={"/genes/" + data.interactions[data.slug].to_name}> Details </a>
   <ul>
    <li>id:<b>{data.interactions[data.slug].to_id}</b></li>
    <li>name:<b>{data.interactions[data.slug].to_name}</b></li>
