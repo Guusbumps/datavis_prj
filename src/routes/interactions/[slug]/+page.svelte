@@ -9,6 +9,11 @@
 
 <script>
   export let data
+
+  let linkText = "";
+  function decapitalize(str) {
+      return str.charAt(0).toLowerCase() + str.slice(1);
+  }
 </script>
 
 <h2>Interaction details</h2>
@@ -22,7 +27,7 @@
   </ul>
 
 <h3>To</h3>
-<a href={"/genes/" + data.interactions[data.slug].to_name}> Details </a>
+<a href={"/genes/" + decapitalize(data.interactions[data.slug].to_name)}> Details </a>
   <ul>
    <li>id:<b>{data.interactions[data.slug].to_id}</b></li>
    <li>name:<b>{data.interactions[data.slug].to_name}</b></li>
