@@ -16,7 +16,7 @@
   //   .then(data => datapoints = data)
   let datapoints = [];
   export let data;
-  datapoints = data
+  datapoints = data;
   const width = 600;
   const height = 600;
   const r = 250;

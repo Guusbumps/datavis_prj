@@ -4,5 +4,7 @@ export const load = ({ fetch }) => {
     const data = await res.json()
     return data
   }
-  return fetchGenes()
+  return {
+    genes: fetchGenes()
+  }
 }
