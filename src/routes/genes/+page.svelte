@@ -10,12 +10,12 @@
 <script>
   import { goto } from '$app/navigation';
 
-  let datapoints = [];
-  fetch('https://vda-lab.github.io/assets/genes.json')
-    .then(res => res.json())
-    .then(data => datapoints = data)
-  // export let datapoints = [];
-  // datapoints = data.
+  // let datapoints = [];
+  // fetch('https://vda-lab.github.io/assets/genes.json')
+  //   .then(res => res.json())
+  //   .then(data => datapoints = data)
+  export let datapoints = [];
+  datapoints = data
   const width = 600;
   const height = 600;
   const r = 250;
