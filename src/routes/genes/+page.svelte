@@ -66,6 +66,9 @@
   svg {
     border: 1px solid black;
     border-radius: 5px;
+    max-width: 600px;
+    max-height: 600px;
+
   }
   line {
               stroke: black;
