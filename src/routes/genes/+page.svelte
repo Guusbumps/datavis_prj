@@ -40,22 +40,25 @@
 
     {#each datapoints as d, i}
       {#if d.gene_strand === "forward"}
-        <line x1={r-10} y1=0 x2={r} y2=0
-          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
-          on:mouseover={handleMouseOver(d)}
-          on:mouseout={handleMouseOut(d)}
-          on:click={handleClick(d)}
-          class:selected="{selected_datapoint && d.gene_name == selected_datapoint}" />
-      {:else if d.gene_strand === "reverse"}
         <line x1={r} y1=0 x2={r+10} y2=0
           transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
           on:mouseover={handleMouseOver(d)}
           on:mouseout={handleMouseOut(d)}
           on:click={handleClick(d)}
           class:selected="{selected_datapoint && d.gene_name == selected_datapoint}" />
+      {:else if d.gene_strand === "reverse"}
+        <line x1={r-10} y1=0 x2={r} y2=0
+          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})"
+          on:mouseover={handleMouseOver(d)}
+          on:mouseout={handleMouseOut(d)}
+          on:click={handleClick(d)}
+          class:selected="{selected_datapoint && d.gene_name == selected_datapoint}" />
       {/if}
-      <line x1={r} y1=0 x2={r+50} y2=0
-          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" />
+      {#if i%200 === 0} <!-- I did not understand "every 200,000 positions" because there are less than 5000 genes in the data, so I added a tick mark every 200 genes" -->
+        <line x1={r} y1=0 x2={r+25} y2=0
+          transform="translate({width/2},{height/2}) rotate({360*i/datapoints.length})" 
+          class="tick"/>
+      {/if}
     {/each}
     
     <text x={width/2} y={height/2} font-size=20>
@@ -79,9 +82,14 @@
       }
   line.selected {
               stroke: red;
-              stroke-width: 3;
+              stroke-width: 2;
               opacity: 1;
   }
+  line.tick {
+              stroke: black;
+              stroke-width: 0.5;
+              opacity: 0.4;
+      }
   circle {
               stroke: black;
               stroke-width: 1;

@@ -7,6 +7,9 @@
 	const width = 600;
 	const height = 600;
 
+	const min_r = 50;
+	const step = 300/201;
+
   let datapoints = [];
 	let datapoints_int = [];
 	datapoints = data.genes;
@@ -56,16 +59,16 @@
 			let index = data_axes.findIndex( d => d.ngn === ngn );
 			if (axes == "regulator") {
 				x = width/2
-				y = height/2-(50+index*step)
+				y = height/2-(min_r+index*step)
 			}
 			else if (axes == "workhorse") {
-				let x1 = (50+index*step)
+				let x1 = (min_r+index*step)
 				let y1 = 0
 				x = x1*Math.cos(5*Math.PI/6)-y1*Math.sin(5*Math.PI/6)+width/2
 				y = x1*Math.sin(5*Math.PI/6)+y1*Math.cos(5*Math.PI/6)+height/2
 			}
 			else if (axes == "manager") {
-				let x1 = (50+index*step)
+				let x1 = (min_r+index*step)
 				let y1 = 0
 				x = x1*Math.cos(Math.PI/6)-y1*Math.sin(Math.PI/6)+width/2
 				y = x1*Math.sin(Math.PI/6)+y1*Math.cos(Math.PI/6)+height/2
@@ -78,6 +81,7 @@
 		let xc = undefined;
 		let yc = undefined;
 		const r = 150
+
 		if (interaction_type == 'ur') {
 			xc = width/2 + Math.cos(Math.PI/6)*r;
 			yc = height/2 - Math.sin(Math.PI/6)*r;
@@ -108,8 +112,6 @@
 	function handleClick(i) {
     goto("/interactions/" + i)
   }
-
-	const step = 300/201;
 
 </script>
 
@@ -142,17 +144,17 @@
 
 	{#each datapoints as d}
 		{#if d.axes === "regulator"}
-			<circle cx={50+step*add_reg()} cy=0 r=2 fill='red'
+			<circle cx={min_r+step*add_reg()} cy=0 r=2 fill='red'
 				transform="translate({width/2},{height/2}) rotate(-90)"
 			/>
 		{/if}
 		{#if d.axes === "manager"}
-			<circle cx={50+step*add_man()} cy=0 r=2 fill='yellow'
+			<circle cx={min_r+step*add_man()} cy=0 r=2 fill='yellow'
 				transform="translate({width/2},{height/2}) rotate(30)"
 			/>
 		{/if}
 		{#if d.axes === "workhorse"}
-			<circle cx={50+step*add_wh()} cy=0 r=2 fill='green'
+			<circle cx={min_r+step*add_wh()} cy=0 r=2 fill='green'
 				transform="translate({width/2},{height/2}) rotate(150)"
 			/>
 		{/if}

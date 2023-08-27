@@ -19,7 +19,7 @@
   {#each datapoints2 as d}
     {#if d.gene_name===data.slug}
       <li>ID: <b>{d.gene_id}</b></li>
-      <li>Blattner number: <b>{d.gene_blattner}</b></li>
+      <li>Blattner number: <b>{d.gene_blattner_number}</b></li>
       <li>Start: <b>{d.gene_start}</b></li>
       <li>Stop: <b>{d.gene_stop}</b></li>
       <li>Strand: <b>{d.gene_strand}</b></li>
