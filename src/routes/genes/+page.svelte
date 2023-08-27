@@ -15,7 +15,6 @@
   //   .then(res => res.json())
   //   .then(data => datapoints = data)
   export let datapoints = [];
-  datapoints = data
   const width = 600;
   const height = 600;
   const r = 250;
