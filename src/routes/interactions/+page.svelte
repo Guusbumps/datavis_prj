@@ -167,11 +167,6 @@
     max-width: 600px;
     max-height: 600px;
   }
-  line {
-              stroke: black;
-              stroke-width: 1;
-              opacity: 0.3;
-      }
 	path {
 							fill: none;
               stroke: black;
