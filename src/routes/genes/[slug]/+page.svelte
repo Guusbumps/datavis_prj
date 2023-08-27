@@ -34,7 +34,7 @@
           </ul>
         {/if}
       </li>
-      <li>RegulonDB link:<b></b></li>
+      <li>RegulonDB link: <a href="http://regulondb.ccg.unam.mx/gene?organism=ECK12&format=jsp&type=gene&term={d.gene_id}">here</a></li>
     {/if}  
   {/each}
 </ul>
